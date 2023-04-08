@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
+import MovementRound from './MovementRound';
 
 
 function SingleRound({user, exercise}){
@@ -7,12 +8,12 @@ function SingleRound({user, exercise}){
     const [isLoaded, setIsLoaded] = useState(false);
     const history = useHistory();
     const { id } = exercise;
-    // const{ id } = useParams()
     
+
     useEffect(() => {
             fetch(`/rounds`).then((r) => r.json())
-            .then((round) => {
-            setRound(round);
+            .then((data) => {
+            setRound(data);
             setIsLoaded(true);
             })
             .catch((error) => console.log(error));
@@ -21,11 +22,8 @@ function SingleRound({user, exercise}){
     
     if (!exercise) return <h1>Loading...</h1>;
     
-    
-    const { name, exercise_id} = round
-    
     const filteredRounds = round.filter((round) => {
-        console.log(id, "lkfjalhrewiquhfkjd,snabvkjdsahf")
+        console.log(round.id)
         if (round.exercise_id === exercise.id)
             return true
         else
@@ -34,8 +32,11 @@ function SingleRound({user, exercise}){
 
     const roundsToDisplay = filteredRounds.map((round)=> {
         return(
-        <li>
+        <li key={round.id}>
             <p>Name: {round.name}</p>
+            <div key={round.id}>
+                <MovementRound round={round} />
+            </div>
             {/* {user && user.id === round.user_id ? (
                 <Link to={`/round/${round.id}/edit`}>
                 <p className="linkToEdit">Edit Round</p>
@@ -45,18 +46,6 @@ function SingleRound({user, exercise}){
         )
     });
 
-    //const {climber_id, route_id, styleTick, date, notes } = tick
-    // console.log(climber.id)
-    // console.log(climber_id)
-    // const addTick =
-    // singleTick ? (
-    //     <div>
-    //         <p>Date Ticked: {singleTick.date}</p>
-    //         <p>Style: {singleTick.styleTick}</p>
-    //         <p>Notes: {singleTick.notes}</p>
-    //     </div>
-    // ) : null;
-
     return(
         <div className="single-round">
         <div className="single-nontext">
@@ -65,6 +54,7 @@ function SingleRound({user, exercise}){
         {/* <h3 className="single-name">{name}</h3> */}
         <ul>{roundsToDisplay}</ul>
         <div>
+        <MovementRound round={round} />
         {/* <Link to={`/rounds/${id}/addround`}>
         <button>Add Round</button>
         </Link> */}

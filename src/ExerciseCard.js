@@ -17,10 +17,9 @@ function ExerciseCard({exercise}){
           {/* </Link> */}
         </div>
         <div className="center">
-          <h3 className="name">{name}</h3>
+          <h3 className="name_and_level">{name} | {level}</h3>
           <SingleRound exercise={exercise}/>
           <p>{date}</p>
-          <p>{level}</p>
         </div>
       </li>
     );

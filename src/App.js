@@ -7,6 +7,8 @@ import Profile from "./Profile";
 import Exercises from "./Exercises";
 import Calendar from "./Calendar";
 import SingleRound from "./SingleRound";
+import MovementRound from "./MovementRound";
+import Movements from "./Movements";
 
 function App() {
 
@@ -44,10 +46,16 @@ function App() {
             <Exercises exercise={exercise} setExercise={setExercise} />
           </Route>
           <Route path="/rounds">
-          <SingleRound user={user} exercise={exercise}/>
-        </Route>
+            <SingleRound user={user} exercise={exercise}/>
+          </Route>
           <Route path="/calendar">
             <Calendar user={user} />
+          </Route>
+          <Route path="/movementround">
+            <MovementRound />
+          </Route>
+          <Route path="/movements">
+            <Movements />
           </Route>
           <Route path="/signin">
             <SignIn />
