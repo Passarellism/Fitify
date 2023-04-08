@@ -1,0 +1,33 @@
+// import React, { useState, useEffect } from "react";
+
+function Home() {
+    return (
+        <div className="home-container">
+            <h1 className="home-title">fitify.</h1>
+            <h3 className="home-subtitle">Check out the highest rated climbs:</h3>
+            {/* Display featured routes */}
+            {/* {featuredRoutes.length > 0 ? (
+            <ul className="cards">
+                {featuredRoutes.map(({ route, average_star_rating }, index) => (
+                <li key={index} className="card" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+                    <div className="image">
+                    <img src={route.image} alt={route.name} />
+                    </div>
+                    <div className="center">
+                    <h3>{route.name}</h3>
+                    <p>{route.grade}</p>
+                    <p>{route.style}</p>
+                    <p>Average Star Rating: {average_star_rating.toFixed(1)}</p>
+                    </div>
+                </li>
+                ))}
+            </ul>
+            ) : (
+            <p>Loading...</p>
+            )} */}
+        </div>
+        );
+    
+}
+
+export default Home;
