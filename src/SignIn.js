@@ -92,7 +92,7 @@ function SignIn() {
         const user = await response.json();
         localStorage.setItem('user', JSON.stringify(user));
         //need to update this from localstorage
-        history.push('/profile');
+        history.push('/home');
       } else {
         actions.setSubmitting(false);
         actions.setFieldError('general', 'Sign-up failed');

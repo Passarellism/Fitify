@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 
-function Profile({ climber, history }) {
+function Calendar() {
     return(
         <div>
             <h1>
-                This is your profile
+                This is your calendar
             </h1>
         </div>
     )
     }
 
-export default withRouter(Profile);
+export default Calendar;
