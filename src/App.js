@@ -6,6 +6,7 @@ import NavBar from"./NavBar";
 import Profile from "./Profile";
 import Exercises from "./Exercises";
 import Calendar from "./Calendar";
+import SingleRound from "./SingleRound";
 
 function App() {
 
@@ -42,6 +43,9 @@ function App() {
           <Route path="/exercises">
             <Exercises exercise={exercise} setExercise={setExercise} />
           </Route>
+          <Route path="/rounds">
+          <SingleRound user={user} exercise={exercise}/>
+        </Route>
           <Route path="/calendar">
             <Calendar user={user} />
           </Route>
