@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { withRouter, Link } from "react-router-dom";
+import * as React from 'react';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 
-function Calendar() {
-    return(
-        <div>
-            <h1>
-                This is your calendar
-            </h1>
-        </div>
-    )
-    }
-
-export default Calendar;
+export default function StaticDatePickerLandscape() {
+  return (
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <StaticDatePicker orientation="landscape" />
+    </LocalizationProvider>
+  );
+}

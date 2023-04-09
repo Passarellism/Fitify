@@ -61,6 +61,7 @@ function SingleRound({user, exercise}){
         </div>
         <br />
         <button onClick={() => history.goBack()}>Back</button>
+        <button onClick={() => history.goBack()}>Add To Calendar</button>
         </div>
             <ul className="review-cards"></ul>
         </div>

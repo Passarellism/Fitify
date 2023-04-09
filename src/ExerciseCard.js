@@ -19,7 +19,7 @@ function ExerciseCard({exercise}){
         <div className="center">
           <h3 className="name_and_level">{name} | {level}</h3>
           <SingleRound exercise={exercise}/>
-          <p>{date}</p>
+          {/* <p>{date}</p> */}
         </div>
       </li>
     );
