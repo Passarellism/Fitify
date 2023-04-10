@@ -4,9 +4,8 @@ import SingleRound from './SingleRound';
 
 function ExerciseCard({exercise}){
 
-    const { name, date, level } = exercise;
-
-    console.log(SingleRound)
+    const { name, date, level, id } = exercise;
+    console.log(exercise, 'exercise name')
 
     return (
       <li className="card">
@@ -20,6 +19,7 @@ function ExerciseCard({exercise}){
           <h3 className="name_and_level">{name} | {level}</h3>
           <SingleRound exercise={exercise}/>
           {/* <p>{date}</p> */}
+          {/* <button onClick={() => history.goBack()}>Back</button> */}
         </div>
       </li>
     );

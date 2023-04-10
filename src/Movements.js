@@ -13,8 +13,8 @@ function Movements({ movementround }){
     }, [])
 
     const filteredMovements = movement.filter((movement) => {
-        console.log(movement.id, "how do i get this id")
-        console.log(movement_id)
+        // console.log(movement.id, "how do i get this id")
+        // console.log(movement_id)
         if (movement.id === movementround.movement_id)
             return true
         else

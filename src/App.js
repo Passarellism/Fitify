@@ -9,6 +9,7 @@ import Calendar from "./Calendar";
 import SingleRound from "./SingleRound";
 import MovementRound from "./MovementRound";
 import Movements from "./Movements";
+import AddToCalendar from "./AddToCalendar";
 
 function App() {
 
@@ -53,6 +54,9 @@ function App() {
           </Route>
           <Route path="/movementround">
             <MovementRound />
+          </Route>
+          <Route path="/exercise/:id/addtocalendar">
+            <AddToCalendar exercise={exercise} />
           </Route>
           <Route path="/movements">
             <Movements />

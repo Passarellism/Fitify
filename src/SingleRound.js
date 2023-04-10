@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import MovementRound from './MovementRound';
+import AddToCalendar from './AddToCalendar';
 
 
 function SingleRound({user, exercise}){
@@ -8,7 +9,7 @@ function SingleRound({user, exercise}){
     const [isLoaded, setIsLoaded] = useState(false);
     const history = useHistory();
     const { id } = exercise;
-    
+    console.log(exercise.id, "lfhjdsahekjwbqrkejbwqfvfs")
 
     useEffect(() => {
             fetch(`/rounds`).then((r) => r.json())
@@ -23,7 +24,7 @@ function SingleRound({user, exercise}){
     if (!exercise) return <h1>Loading...</h1>;
     
     const filteredRounds = round.filter((round) => {
-        console.log(round.id)
+        // console.log(round.id)
         if (round.exercise_id === exercise.id)
             return true
         else
@@ -51,7 +52,6 @@ function SingleRound({user, exercise}){
         <div className="single-nontext">
         </div>
         <div className="single-center">
-        {/* <h3 className="single-name">{name}</h3> */}
         <ul>{roundsToDisplay}</ul>
         <div>
         <MovementRound round={round} />
@@ -61,7 +61,9 @@ function SingleRound({user, exercise}){
         </div>
         <br />
         <button onClick={() => history.goBack()}>Back</button>
-        <button onClick={() => history.goBack()}>Add To Calendar</button>
+        <Link to={`/exercise/${exercise.id}/addtocalendar`}>
+            <button exercise={exercise}> add to cal </button> 
+        </Link>
         </div>
             <ul className="review-cards"></ul>
         </div>
