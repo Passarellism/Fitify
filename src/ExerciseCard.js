@@ -4,24 +4,23 @@ import SingleRound from './SingleRound';
 
 function ExerciseCard({exercise}){
 
-    const { name, date, level, id } = exercise;
-    console.log(exercise, 'exercise name')
+  // console.log(exercise.name)
+
+    const { name, date, level, } = exercise;
+
+    // console.log(name)
 
     return (
-      <li className="card">
+      <div className="card">
         <div className="image">
-          {/* <Link to={`/rounds/${id}`}> */}
-            {/* <img src={image} alt={name} /> */}
-            {/* <img /> */}
-          {/* </Link> */}
         </div>
         <div className="center">
-          <h3 className="name_and_level">{name} | {level}</h3>
+          <h3 className="name_and_level"> {name} </h3>
           <SingleRound exercise={exercise}/>
-          {/* <p>{date}</p> */}
-          {/* <button onClick={() => history.goBack()}>Back</button> */}
+        
+
         </div>
-      </li>
+      </div>
     );
   
 }

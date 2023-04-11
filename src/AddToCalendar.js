@@ -14,20 +14,15 @@ function AddToCalendar({exercise}) {
         
     const filteredExercises = exercise.filter((exercise) => exercise.id === Number(id));
 
-    // console.log(exercise.id)
-
-    
-    // const dateStr = formattedDate.toLocaleDateString("en-US");
     
     const requestBody = {
-        user_id: 1, // replace with the actual user ID
         exercise_id: filteredExercises[0].id,
         date: selectedDate
     };
     
-    console.log(filteredExercises[0].id)
+    // console.log(filteredExercises[0].id)
     
-    fetch("http://localhost:5555/userexercises", {
+    fetch("/userexercises", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

@@ -23,14 +23,14 @@ function Movements({ movementround }){
 
     const movementToDisplay = filteredMovements.map((movement) => {
         return(
-            <li>
+            <div key={movement.id} >
                 <p>Name: {movement.name}</p>
-            </li>
+            </div>
         )
     })
 
     return(
-        <p>{movementToDisplay}</p>
+        <div>{movementToDisplay}</div>
     )
 }
 

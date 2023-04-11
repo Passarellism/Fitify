@@ -40,7 +40,7 @@ function MovementRound({round}){
 
     return(
         <div className="movementround">
-        <ul>{movementroundsToDisplay}</ul>
+        <div>{movementroundsToDisplay}</div>
         <div>
             <Movements movementround={movementround} movement_id={movementround.movement_id} />
         </div>

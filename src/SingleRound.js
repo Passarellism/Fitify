@@ -4,12 +4,13 @@ import MovementRound from './MovementRound';
 import AddToCalendar from './AddToCalendar';
 
 
+
 function SingleRound({user, exercise}){
     const[round, setRound]= useState([])
     const [isLoaded, setIsLoaded] = useState(false);
     const history = useHistory();
-    const { id } = exercise;
-    console.log(exercise.id, "lfhjdsahekjwbqrkejbwqfvfs")
+    // const { id } = exercise;
+    // console.log(exercise.id, "lfhjdsahekjwbqrkejbwqfvfs")
 
     useEffect(() => {
             fetch(`/rounds`).then((r) => r.json())
@@ -19,7 +20,6 @@ function SingleRound({user, exercise}){
             })
             .catch((error) => console.log(error));
         }, []);
-
     
     if (!exercise) return <h1>Loading...</h1>;
     
@@ -33,7 +33,7 @@ function SingleRound({user, exercise}){
 
     const roundsToDisplay = filteredRounds.map((round)=> {
         return(
-        <li key={round.id}>
+        <div key={round.id}>
             <p>Name: {round.name}</p>
             <div key={round.id}>
                 <MovementRound round={round} />
@@ -43,23 +43,22 @@ function SingleRound({user, exercise}){
                 <p className="linkToEdit">Edit Round</p>
                 </Link>
             ) : null} */}
-        </li>
+        </div>
         )
     });
 
     return(
         <div className="single-round">
-        <div className="single-nontext">
+            <div className="single-nontext">
         </div>
         <div className="single-center">
-        <ul>{roundsToDisplay}</ul>
-        <div>
-        <MovementRound round={round} />
-        {/* <Link to={`/rounds/${id}/addround`}>
-        <button>Add Round</button>
-        </Link> */}
+            <div>{roundsToDisplay}</div>
+            <div>
+                <MovementRound round={round} exercise={exercise} />
+            {/* <Link to={`/rounds/${id}/addround`}>
+            <button>Add Round</button>
+            </Link> */}
         </div>
-        <br />
         <button onClick={() => history.goBack()}>Back</button>
         <Link to={`/exercise/${exercise.id}/addtocalendar`}>
             <button exercise={exercise}> add to cal </button> 

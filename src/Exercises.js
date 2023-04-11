@@ -4,7 +4,9 @@ import ExerciseCard from "./ExerciseCard";
 
 function Exercises({exercise, setExercise}){
 
-    const exerciseCards = exercise.map(exercise => <ExerciseCard key={exercise.id} exercise={exercise} setExercise={setExercise}/>)
+    // console.log(exercise)
+
+    const exerciseCards = exercise?.map(exercise => <ExerciseCard key={exercise.id} exercise={exercise} setExercise={setExercise}/>)
 
     return (
         <div>

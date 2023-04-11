@@ -50,7 +50,7 @@ function App() {
             <SingleRound user={user} exercise={exercise}/>
           </Route>
           <Route path="/calendar">
-            <Calendar user={user} />
+            <Calendar user={user} exercise={exercise} setExercise={setExercise} />
           </Route>
           <Route path="/movementround">
             <MovementRound />

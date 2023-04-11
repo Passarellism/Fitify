@@ -24,6 +24,11 @@
   color: white;
 }
 
+/* .Exercise-card {
+  border: 50px solid black;
+  padding: 10px;
+} */
+
 .App-link {
   color: #61dafb;
 }
@@ -36,3 +41,5 @@
     transform: rotate(360deg);
   }
 }
+
+
