@@ -6,12 +6,14 @@ import { useHistory, useParams } from "react-router-dom";
 import ExerciseCard from "./ExerciseCard";
 
 
-export default function Calendar({ exercise }) {
-  // const { id } = exercise;
+
+export default function Calendar({ exercise, user }) {
+  // const { id } = user;
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [userExercise, setUserExercise] = useState([])
-  // console.log(exercise)
+  // console.log(user)
   
+
   useEffect(() => {
     fetch('http://localhost:5555/userexercises').then((res) => res.json())
     .then((data) => {
@@ -27,10 +29,20 @@ export default function Calendar({ exercise }) {
     return userExercise.date === selectedDate.toISOString().slice(0, 10);
   });
   
+  // const userExerciseComponents = filteredUserExercises.map((userExercise) => {
+  //   return <ExerciseCard exercise={exercise} key={userExercise.id} />;
+  // });
+
+  console.log(filteredUserExercises)
+
   const userExerciseComponents = filteredUserExercises.map((userExercise) => {
-    return <ExerciseCard exercise={exercise} key={userExercise.id} />;
+    if (userExercise.user_id === user.id)
+      return <ExerciseCard exercise={userExercise.exercise} key={exercise.id} />;
+    // return true
   });
+  
  
+
   return(
     <>
     <div className="calendar-card">
@@ -43,7 +55,6 @@ export default function Calendar({ exercise }) {
       </LocalizationProvider>
       {userExerciseComponents}
     </div>
-    
   </>
   )
 }

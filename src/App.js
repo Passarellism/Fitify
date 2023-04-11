@@ -9,13 +9,38 @@ import Calendar from "./Calendar";
 import SingleRound from "./SingleRound";
 import MovementRound from "./MovementRound";
 import Movements from "./Movements";
+import EditProfile from "./EditProfile";
 import AddToCalendar from "./AddToCalendar";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 
 function App() {
 
   const [user, setUser] = useState(null);
   const [page, setPage] = useState("/")
   const [exercise, setExercise] = useState([])
+  const theme = createTheme();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    fetchUser()
+  },[])
+
+  const fetchUser = () => {
+    fetch('/authorized')
+      .then((res) => {
+        if (res.ok) {
+          setIsLoggedIn(true); 
+          return res.json();
+        } else {
+          setIsLoggedIn(false); 
+          setUser(null);
+        }
+      })
+      .then((data) => {
+        setUser(data);
+      });
+  };
 
   useEffect(() => {
     fetch('http://localhost:5555/exercises')
@@ -32,7 +57,9 @@ function App() {
   }, [])
 
 
+
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
       <Router>
       <NavBar onChangePage={setPage} />
@@ -41,7 +68,10 @@ function App() {
             <Home />
           </Route>
           <Route path="/profile">
-            <Profile user={user} />
+            <Profile user={user}/>
+          </Route>
+          <Route path="/user/:id/edit">
+            <EditProfile user={user}/>
           </Route>
           <Route path="/exercises">
             <Exercises exercise={exercise} setExercise={setExercise} />
@@ -67,6 +97,7 @@ function App() {
         </Switch>
       </Router>
     </div>
+    </ThemeProvider>
   );
   }
 

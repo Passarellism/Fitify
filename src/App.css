@@ -1,45 +1,481 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #88837e;
+  padding-right: 10px;
+  overflow-y: scroll;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (min-width: 768px) {
+  body {
+    min-height: calc(100vh - 50px);
   }
+} 
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #88837e;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #cad0cf;
+  border-radius: 10px;
+}
+body.env-with-scrollbar {
+  padding-right: calc(20px + env(safe-area-inset-right));
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body.env-without-scrollbar main {
+  padding-right: 20px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #335364;
+} 
+
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px 20px 18px 18px;
+  border-radius: 5px;
+  background-image: url("../public/team-lynn-hill-climbing.jpg");
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position: top center;
+  width: calc(70% - 10px); 
+  height: 400px;
+  margin: 0 auto;
+}
+
+.crux {
+  color: #335364;
+  text-shadow: white 0px 0px 2px;
+  font-size: 60px;
+  font-family: "Titillium Web", sans-serif;
+}
+.crux-subheader {
+  color: #c5bfb5;
+  text-shadow: #335364 0px 0px 2px;
+  font-size: 25px;
+  font-family: "Titillium Web", sans-serif;
+}
+
+main {
+  padding: 0 1rem;
+  background-color: #b2b2ad;
+  width: calc(70% - 10px); 
+  margin: 0 auto;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #335364;
+  height: 50px;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  height: 100%;
+}
+
+.nav-bar a {
+  color: #cad0cf;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "Titillium Web", sans-serif;
+  padding: 10px;
+}
+
+.nav-bar a:hover {
+  color: #10abd8;
+}
+
+.home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-top: 40px;
+  padding-bottom: 90px;
 }
 
-/* .Exercise-card {
-  border: 50px solid black;
+.home-title {
+  text-align: center;
+  color: #335364;
+}
+
+.home-subtitle {
+  text-align: center;
+  color: #cad0cf;
+}
+
+#form-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 10px;
-} */
-
-.App-link {
-  color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+label {
+  font-family: "Titillium Web", sans-serif;
+  color: #d9c4b4;
 }
 
+input {
+  height: 30px;
+  width: 100%;
+  margin: 3px;
+  border: 1px solid #bbc0c6;
+  border-radius: 5px;
+  padding: 5px;
+}
 
+button, [type="submit"] {
+  cursor: pointer;
+  background-color: #53565a;
+  color: white;
+  font-family: "Titillium Web", sans-serif;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+button:hover, [type="submit"]:hover {
+  background-color: #10abd8;
+}
+
+form {
+  margin: 10px auto;
+  width: 400px; 
+  display: flex;
+  flex-direction: column;
+  color: #cad0cf;
+  border: 1px solid #bbc0c6;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #335364;
+}
+
+#submit-title {
+  text-align: center;
+  font-family: "Titillium Web", sans-serif;
+  color: #d9c4b4;
+  margin-bottom: 10px;
+}
+
+.cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: "Titillium Web", sans-serif;
+  align-items: flex-start;
+}
+
+.card {
+  margin: 1rem;
+  border-radius: 5px;
+  width: 500px;
+  height: 500px;
+  background-color: #335364;
+  color: #1d1d1d;
+  position: relative;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  /* overflow: hidden; */
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card .image {
+  height: 225px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.card:hover .image img {
+  transform: scale(1.1);
+}
+
+.card .center {
+  text-align: center;
+  padding: 1rem;
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #c5bfb5;
+}
+
+.card p {
+  margin: 0.5rem 0;
+  color: #10abd8
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+.card p:nth-child(3) {
+  color: #10abd8;
+}
+
+.card p:last-child {
+  color: #c5bfb5;
+}
+
+.card p:last-child:hover {
+  color: #10abd8;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  color: #335364;
+  background-color: #88837e;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  background-color: #53565a;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.single-route {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: #88837e;
+  color: #335364;
+}
+
+.name_and_level{
+  height: 500px;
+}
+
+.single-round{
+  height: 500px;
+  width: 300px;
+}
+
+.single-nontext {
+  margin-right: 20px;
+}
+
+.single-name {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.single-image {
+  max-width: 500px;
+  max-height: 500px;
+  margin-bottom: 10px;
+}
+
+.link-to-edit {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #10abd8;
+}
+
+.link-to-edit:hover {
+  color: #335364;
+}
+
+.single-center p {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.profile-cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: "Titillium Web", sans-serif;
+  align-items: flex-start;
+}
+
+.profile-card {
+  margin: 1rem;
+  border-radius: 5px;
+  width: 300px;
+  background-color: #335364;
+  color: #c5bfb5;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.profile-card__image {
+  height: 225px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.profile-card__title {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.profile-card__title h3 {
+  margin-top: 0;
+}
+
+.profile-card__date {
+  margin: 0.5rem 0;
+  text-align: center;
+  color: #10abd8;
+}
+
+.profile-card__notes {
+  margin: 0.5rem 0;
+  text-align: center;
+  color: #c5bfb5;
+}
+
+.profile-card__notes:hover {
+  color: #10abd8;
+}
+
+.review-cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: "Titillium Web", sans-serif;
+  align-items: flex-start;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  border-radius: 5px;
+  width: 300px;
+  background-color: #335364;
+  color: #c5bfb5;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.review-card__content {
+  text-align: center;
+}
+
+.review-card__title {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.review-card__comment {
+  margin: 0.5rem 0;
+  text-align: center;
+  color: #c5bfb5;
+}
+
+.review-card__comment:hover {
+  color: #10abd8;
+}
+
+.review-card__rating {
+  margin: 0.5rem 0;
+  text-align: center;
+  color: #c5bfb5;
+}
+
+.review-card__rating:hover {
+  color: #10abd8;
+}
+
+.review-card__edit-button {
+  align-self: center;
+}
+
+.review-card__image {
+  height: 225px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.review-card__image img {
+  width: 500%;
+  height: 500%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.profile-title {
+  text-align: center;
+  color: #335364;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}

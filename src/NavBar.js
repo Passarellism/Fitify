@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
+
+
   useEffect(() => {
     fetch('/authorized')
       .then(res => {

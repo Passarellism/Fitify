@@ -8,18 +8,13 @@ function ExerciseCard({exercise}){
 
     const { name, date, level, } = exercise;
 
-    // console.log(name)
+    // console.log(exercise)
 
     return (
       <div className="card">
-        <div className="image">
-        </div>
-        <div className="center">
-          <h3 className="name_and_level"> {name} </h3>
-          <SingleRound exercise={exercise}/>
-        
-
-        </div>
+        <h1><SingleRound exercise={exercise} /></h1>
+        <h3 className="name_and_level"> {name} </h3>
+        {/* <h1><SingleRound exercise={exercise}/></h1> */}
       </div>
     );
   
