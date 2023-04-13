@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
+import Typography from '@mui/material/Typography';
 
 function Movements({ movementround }){
     const [movement, setMovement] = useState([])
@@ -23,9 +24,11 @@ function Movements({ movementround }){
 
     const movementToDisplay = filteredMovements.map((movement) => {
         return(
+            <Typography component="h1" variant="h5">
             <div key={movement.id} >
                 <p>Name: {movement.name}</p>
             </div>
+            </Typography>
         )
     })
 

@@ -1,23 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SingleRound from './SingleRound';
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-function ExerciseCard({exercise}){
+export default function ExerciseCard({exercise}){
+  const { name, level, } = exercise;
 
-  // console.log(exercise.name)
-
-    const { name, date, level, } = exercise;
-
-    // console.log(exercise)
-
-    return (
-      <div className="card">
-        <h1><SingleRound exercise={exercise} /></h1>
-        <h3 className="name_and_level"> {name} </h3>
-        {/* <h1><SingleRound exercise={exercise}/></h1> */}
-      </div>
-    );
+  return (
+    <div className="cards">
+      <Box
+      sx={{
+        marginTop: 8,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: 350,
+        height: 2600,
+      }}
+      >
+        <Card variant="outlined" className="card">
+          <Typography component="h2" variant="h5">
+            {name} | {level} 
+          </Typography>
+          <Typography component="h2" variant="h5"
+            sx={{
+              margin: 2,
+            }}>
+              <SingleRound exercise={exercise} />
+          </Typography>
+        </Card>
+      </Box>
+    </div>
+  );
   
 }
-
-export default ExerciseCard;

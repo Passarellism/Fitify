@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
+import Button from '@mui/material/Button';
 
 function Profile({ user }) {
 
@@ -23,7 +24,7 @@ function Profile({ user }) {
             {user.phone_number}
             </h1>
             <Link to={`/user/${user.id}/edit`}>
-                <button type="submit" value='Save'>Edit Profile</button>
+                <Button variant="contained" type="submit" value='Save'>Edit Profile</Button> 
             </Link>
         </div>
     )

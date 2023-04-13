@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import Movements from './Movements';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
 
 
 
@@ -17,7 +19,6 @@ function MovementRound({round}){
 
     
     const filteredMovementRounds = movementround.filter((movementround) => {
-        // console.log(movementround.movement_id, "BIG BOBS BEAN BOWL")
         if (movementround.round_id === round.id)
             return true
         else
@@ -27,24 +28,30 @@ function MovementRound({round}){
 
     const movementroundsToDisplay = filteredMovementRounds.map((movementround) => {
         return(
-            <li key={movementround.movement_id}>
+            <ul key={movementround.movement_id}>
                 <div key={movementround.movement_id}>
                     <Movements movementround={movementround}/>
                 </div>
-                <p>Weight: {movementround.weight}</p>
-                <p>Reps: {movementround.reps}</p>
-                <p>Sets: {movementround.sets}</p>
-            </li>
+                <Typography component="h1" variant="h5">
+                    <ul>
+                        <p>Weight: {movementround.weight}</p>
+                        <p>Reps: {movementround.reps}</p>
+                        <p>Sets: {movementround.sets}</p>
+                    </ul>
+                </Typography>
+            </ul>
         )
     })
 
     return(
-        <div className="movementround">
-        <div>{movementroundsToDisplay}</div>
-        <div>
-            <Movements movementround={movementround} movement_id={movementround.movement_id} />
-        </div>
-        </div>
+        // <Card variant="outlined">
+            <div className="movementround">
+            <div>{movementroundsToDisplay}</div>
+                <div>
+                    <Movements movementround={movementround} movement_id={movementround.movement_id} />
+                </div>
+            </div>
+        // </Card>
     )
 }
 

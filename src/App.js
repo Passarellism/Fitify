@@ -14,7 +14,7 @@ import AddToCalendar from "./AddToCalendar";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
-function App() {
+export default function App() {
 
   const [user, setUser] = useState(null);
   const [page, setPage] = useState("/")
@@ -56,49 +56,45 @@ function App() {
     });
   }, [])
 
-
-
   return (
     <ThemeProvider theme={theme}>
-    <div className="App">
-      <Router>
-      <NavBar onChangePage={setPage} />
-        <Switch>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/profile">
-            <Profile user={user}/>
-          </Route>
-          <Route path="/user/:id/edit">
-            <EditProfile user={user}/>
-          </Route>
-          <Route path="/exercises">
-            <Exercises exercise={exercise} setExercise={setExercise} />
-          </Route>
-          <Route path="/rounds">
-            <SingleRound user={user} exercise={exercise}/>
-          </Route>
-          <Route path="/calendar">
-            <Calendar user={user} exercise={exercise} setExercise={setExercise} />
-          </Route>
-          <Route path="/movementround">
-            <MovementRound />
-          </Route>
-          <Route path="/exercise/:id/addtocalendar">
-            <AddToCalendar exercise={exercise} />
-          </Route>
-          <Route path="/movements">
-            <Movements />
-          </Route>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+      <div className="App">
+        <Router>
+        <NavBar onChangePage={setPage} />
+          <Switch>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/profile">
+              <Profile user={user}/>
+            </Route>
+            <Route path="/user/:id/edit">
+              <EditProfile user={user}/>
+            </Route>
+            <Route path="/exercises">
+              <Exercises exercise={exercise} setExercise={setExercise} />
+            </Route>
+            <Route path="/rounds">
+              <SingleRound user={user} exercise={exercise}/>
+            </Route>
+            <Route path="/calendar">
+              <Calendar user={user} exercise={exercise} setExercise={setExercise} />
+            </Route>
+            <Route path="/movementround">
+              <MovementRound />
+            </Route>
+            <Route path="/exercise/:id/addtocalendar">
+              <AddToCalendar exercise={exercise} />
+            </Route>
+            <Route path="/movements">
+              <Movements />
+            </Route>
+            <Route path="/signin">
+              <SignIn />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
     </ThemeProvider>
   );
-  }
-
-  export default App;
+}
