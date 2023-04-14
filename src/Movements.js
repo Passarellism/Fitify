@@ -22,7 +22,7 @@ function Movements({ movementround }){
 
     const movementToDisplay = filteredMovements.map((movement) => {
         return(
-            <Typography component="h1" variant="h6">
+            <Typography component="h1" variant="body1">
             <div key={movement.id} >
                 <p>{movement.name}</p>
             </div>

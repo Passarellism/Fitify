@@ -94,8 +94,8 @@ function SignIn() {
       });
   
       if (response.ok) {
-        const climber = await response.json();
-        sessionStorage.setItem('climber', JSON.stringify(climber));
+        const user = await response.json();
+        sessionStorage.setItem('user', JSON.stringify(user));
         history.push('/profile');
       } else {
         actions.setSubmitting(false);
