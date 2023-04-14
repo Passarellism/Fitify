@@ -23,11 +23,11 @@ export default function ExerciseCard({exercise}){
           <Typography component="h2" variant="h5">
             {name} | {level} 
           </Typography>
-          <Typography component="h2" variant="h5"
+          <Typography component="h3" variant="body2"
             sx={{
               margin: 2,
             }}>
-              <SingleRound exercise={exercise} />
+            <SingleRound exercise={exercise} />
           </Typography>
         </Card>
       </Box>

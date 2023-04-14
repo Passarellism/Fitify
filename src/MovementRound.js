@@ -3,6 +3,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import Movements from './Movements';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 
 
@@ -28,18 +29,26 @@ function MovementRound({round}){
 
     const movementroundsToDisplay = filteredMovementRounds.map((movementround) => {
         return(
+            <Box sx={{mt:-2}}>
             <ul key={movementround.movement_id}>
                 <div key={movementround.movement_id}>
-                    <Movements movementround={movementround}/>
+                    <Movements movementround={movementround}/> 
                 </div>
-                <Typography component="h1" variant="h5">
+                <Box sx={{mt:-3}}>
                     <ul>
-                        <p>Weight: {movementround.weight}</p>
-                        <p>Reps: {movementround.reps}</p>
-                        <p>Sets: {movementround.sets}</p>
-                    </ul>
-                </Typography>
+                        <Typography component="h1" variant="body2" sx={{mt: -2,}}>
+                            <p>Weight: {movementround.weight}</p>
+                        </Typography>
+                        <Typography component="h1" variant="body2" sx={{mt: -2,}}>
+                            <p>Reps: {movementround.reps}</p>
+                        </Typography>
+                        <Typography component="h1" variant="body2" sx={{mt: -2,}}>
+                            <p>Sets: {movementround.sets}</p>
+                        </Typography>
+                </ul>
+                </Box>
             </ul>
+            </Box>
         )
     })
 

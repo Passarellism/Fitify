@@ -31,13 +31,13 @@ export default function SingleRound({user, exercise}){
 
     const roundsToDisplay = filteredRounds.map((round)=> {
         return(
-            <Card variant="outlined" className="card">
-                <div key={round.id}>
-                    <div key={round.id}>
-                    <p>{round.name} "glaben"</p>
+            <Card variant="outlined" className="card" sx={{ mt: 0, py: 1 }}>
+                {/* <div key={round.id}> */}
+                    <Typography component="h1" variant="h6" sx={{ mb: -3 }}>
+                        {round.name} 
+                    </Typography>
                     <MovementRound round={round} />
-                    </div>
-                </div>
+                {/* </div> */}
             </Card>
         )
     });
@@ -47,14 +47,12 @@ export default function SingleRound({user, exercise}){
                 <div className="single-round">
                         </div>
                     <div className="single-center">
-                    <Typography component="h1" variant="h5">
-                        <div>{roundsToDisplay}</div>
-                        <div>
+                    <Typography component="h1" variant="h5" >
+                        {roundsToDisplay}
                             <MovementRound round={round} exercise={exercise} />
                             {/* <Link to={`/rounds/${id}/addround`}>
                             <button>Add Round</button>
                             </Link> */}
-                        </div>
                     </Typography>
                     {/* <Button variant="contained" onClick={() => history.goBack()}>Edit</Button> */}
                     <Link to={`/exercise/${exercise.id}/addtocalendar`}>
