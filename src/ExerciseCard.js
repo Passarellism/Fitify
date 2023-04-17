@@ -47,7 +47,7 @@ export default function ExerciseCard({exercise}){
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        width: 400,
+        width: 390,
         height: 2600,
       }}
       >

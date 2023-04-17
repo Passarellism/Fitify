@@ -5,6 +5,7 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { useHistory, useParams } from "react-router-dom";
 import ExerciseCard from "./ExerciseCard";
 import Box from '@mui/material/Box';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 
 
@@ -59,7 +60,7 @@ return (
         }}
       >
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <StaticDatePicker
+          <DateCalendar
             orientation="landscape"
             selectedSections=" year, month, number"
             onChange={handleDateChange}

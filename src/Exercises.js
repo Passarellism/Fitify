@@ -10,23 +10,25 @@ export default function Exercises({exercise, setExercise}){
     
     return (
         <Grid container spacing={2} columnSpacing={{ xs: 1, sm: 5, md: 5 }} maxWidth="xl"
-        sx={{
-            gridTemplateColumns: 'repeat(4, 1fr)',
-             width: 600,  
-        }}>
-            <Grid item xs={1.9}>
-                <ul style={{ listStyleType: "none", margin: 0, padding: 30 }}>
+            sx={{
+                gridTemplateColumns: 'repeat(4, 1fr)',
+                width: 200,
+                gridTemplateColumns: 'repeat(4, 1fr)',
+                width: 200,
+                overflowY: 'scroll',
+                }}
+        >
+            <Grid item xs={2.5}>
+                <ul style={{ listStyleType: "none", margin: 12, padding: 30 }}>
                     <Typography variant="h5" style={{ marginBottom: "10px" }}><a href="#" style={{ textDecoration: "none", color: "black" }}>All Exercises</a></Typography>
                     <Typography variant="h5" style={{ marginBottom: "10px" }}><a href="#" style={{ textDecoration: "none", color: "black" }}>Favorites</a></Typography>
                     <Typography variant="h5" style={{ marginBottom: "10px" }}><a href="#" style={{ textDecoration: "none", color: "black" }}>Popular</a></Typography>
                     <Typography variant="h5" style={{ marginBottom: "10px" }}><a href="#" style={{ textDecoration: "none", color: "black" }}>Recommended</a></Typography>
                 </ul>
             </Grid>
-            <Grid item xs={10}>
-                <Grid2 container spacing={9} columnSpacing={{ xs: 12, sm: 5, md: -20 }} maxWidth="xl">
-                    {exerciseCards}
-                </Grid2>
-            </Grid>
+            {/* <Grid style={{ width: "1200px", height: "600px", overflowY: "scroll" }}> */}
+                {exerciseCards}
+            {/* </Grid> */}
         </Grid>
     )
 }
