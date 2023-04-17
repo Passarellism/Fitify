@@ -16,15 +16,18 @@ import CardHeader from '@mui/material/CardHeader';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
 import CardContent from '@mui/material/CardContent';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-export default function ExerciseCard({exercise}){
-  const { name, level, } = exercise;
+export default function ExerciseCard({exercise, isFavorited, onToggleFavorite}){
+  const { name, level, date, description } = exercise;
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  // console.log(description)
+  // console.log(description)
 
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -37,6 +40,10 @@ export default function ExerciseCard({exercise}){
     }),
   }));
 
+  const handleFavoriteClick = () => {
+    onToggleFavorite(exercise.id);
+  };
+
   return (
     <div className="cards">
       <Box
@@ -48,9 +55,10 @@ export default function ExerciseCard({exercise}){
         flexDirection: 'column',
         alignItems: 'center',
         width: 390,
-        height: 2600,
+        // height: 200,
       }}
       >
+      
         <Card variant="outlined" className="card" sx={{ width: 375 }}>
           <CardHeader
             avatar={
@@ -68,14 +76,12 @@ export default function ExerciseCard({exercise}){
           />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-          DESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTION
-          DESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTION
-          DESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTION
+          {description}
           </Typography>
         </CardContent>
             <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
+              <IconButton aria-label="add to favorites" onClick={handleFavoriteClick}>
+                {isFavorited ? <FavoriteIcon /> : <FavoriteBorderIcon />}
               </IconButton>
               <IconButton aria-label="share">
                 <ShareIcon />

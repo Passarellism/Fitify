@@ -11,6 +11,7 @@ import MovementRound from "./MovementRound";
 import Movements from "./Movements";
 import EditProfile from "./EditProfile";
 import AddToCalendar from "./AddToCalendar";
+import Favorites from "./Favorites";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -21,6 +22,7 @@ export default function App() {
   const [exercise, setExercise] = useState([])
   const theme = createTheme();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
   useEffect(() => {
     fetchUser()
@@ -55,6 +57,8 @@ export default function App() {
       console.error('Error fetching data:', error);
     });
   }, [])
+
+  console.log(exercise)
 
   return (
     <ThemeProvider theme={theme}>
@@ -91,6 +95,9 @@ export default function App() {
             </Route>
             <Route path="/signin">
               <SignIn />
+            </Route>
+            <Route path="/favorites">
+              <Favorites user={user}/>
             </Route>
           </Switch>
         </Router>
