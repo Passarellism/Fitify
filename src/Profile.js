@@ -4,8 +4,6 @@ import Button from '@mui/material/Button';
 
 export default function Profile({ user }) {
 
-    // console.log(user.first_name)
-
     return(
         <div>
             <h1>
@@ -23,7 +21,7 @@ export default function Profile({ user }) {
             <h1>
             {user?.phone_number}
             </h1>
-            <Link to={`/user/${user?.id}/edit`}>
+            <Link to={`/user/${user?.id}/edit`} style={{ textDecoration: "none", color: "black" }}>
                 <Button variant="contained" type="submit" value='Save'>Edit Profile</Button> 
             </Link>
         </div>

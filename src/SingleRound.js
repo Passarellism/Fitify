@@ -5,6 +5,11 @@ import AddToCalendar from './AddToCalendar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
+// import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+
+// import { AdapterDayjs  } from '@mui/x-date-pickers/AdapterDayjs';
+
+
 
 export default function SingleRound({user, exercise}){
     const[round, setRound]= useState([])
@@ -55,7 +60,10 @@ export default function SingleRound({user, exercise}){
                             </Link> */}
                     </Typography>
                     {/* <Button variant="contained" onClick={() => history.goBack()}>Edit</Button> */}
-                    <Link to={`/exercise/${exercise.id}/addtocalendar`}>
+                    {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+                   <DatePicker></DatePicker>
+                   </LocalizationProvider> */}
+                    <Link to={`/exercise/${exercise.id}/addtocalendar`} style={{ textDecoration: "none", color: "black" }}>
                         <Button variant="contained" exercise={exercise}> Add to Calendar </Button> 
                     </Link>
                     </div>

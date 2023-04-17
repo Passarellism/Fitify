@@ -4,6 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { useHistory, useParams } from "react-router-dom";
 import ExerciseCard from "./ExerciseCard";
+import Box from '@mui/material/Box';
 
 
 
@@ -43,18 +44,30 @@ export default function Calendar({ exercise, user }) {
   
  
 
-  return(
-    <>
+return (
+  <div style={{ display: "flex", flexDirection: "row" }}>
     <div className="calendar-card">
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <StaticDatePicker
-          orientation="landscape"
-          selectedSections=" year, month, number"
-          onChange={handleDateChange}
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: 600,
+        }}
+      >
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <StaticDatePicker
+            orientation="landscape"
+            selectedSections=" year, month, number"
+            onChange={handleDateChange}
           />
-      </LocalizationProvider>
-      {userExerciseComponents}
+        </LocalizationProvider>
+      </Box>
     </div>
-  </>
-  )
+    <div>{userExerciseComponents}</div>
+  </div>
+);
 }

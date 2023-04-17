@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { StaticDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 // import { useFormik } from "formik";
 
-function AddToCalendar({exercise}) {
+export default function AddToCalendar({exercise}) {
     const [selectedDate, setSelectedDate] = useState("");
     const { id } = useParams();
     const history = useHistory();
@@ -36,7 +38,7 @@ function AddToCalendar({exercise}) {
         return response.json();
     })
     .then(() => {
-        history.push("/calendar");
+        history.push("/exercises");
     })
     .catch((error) => {
         console.error("Error creating user exercise:", error);
@@ -49,6 +51,8 @@ const handleDateChange = (event) => {
 
 return (
     <div>
+    {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <StaticDatePicker> */}
       <h1>Add to Calendar</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -57,63 +61,9 @@ return (
         </label>
         <button type="submit">Add to Calendar</button>
       </form>
+      {/* </StaticDatePicker>
+      </LocalizationProvider> */}
     </div>
   );
 }
 
-
-export default AddToCalendar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const formik = useFormik({
-//     enableReinitialize: true,
-//     onSubmit: (values) => {
-//         console.log(values)
-//         fetch("http://localhost:5555/userexercises", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(requestBody)
-//         })
-//         .then((response) => {
-//             if (!response.ok) {
-//             throw new Error(`Error creating user exercise: ${response.status}`);
-//             }
-//             return response.json();
-//         })
-//         .then(() => {
-//             history.push("/calendar");
-//         })
-//         .catch((error) => {
-//             console.error("Error creating user exercise:", error);
-//         });
-//     }
-// })

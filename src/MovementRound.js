@@ -29,12 +29,12 @@ function MovementRound({round}){
 
     const movementroundsToDisplay = filteredMovementRounds.map((movementround) => {
         return(
-            <Box sx={{mt:-2}}>
+            <Box sx={{height: 80, mt:-2}}>
             <ul key={movementround.movement_id}>
                 <div key={movementround.movement_id}>
                     <Movements movementround={movementround}/> 
                 </div>
-                <Box sx={{width: 250, mt:-3}}>
+                <Box sx={{width: 250, height:40, mt:-2,}}>
                     <ul>
                         <Typography component="h1" variant="body2" sx={{mt: -2,}}>
                             <p>Weight: {movementround.weight}</p>
