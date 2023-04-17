@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SingleRound from './SingleRound';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 // import Item from '@mui/material/Item';
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
+import { styled } from '@mui/material/styles';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import CardActions from '@mui/material/CardActions';
 
 export default function ExerciseCard({exercise}){
   const { name, level, } = exercise;
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
+
+  const ExpandMore = styled((props) => {
+    const { expand, ...other } = props;
+    return <IconButton {...other} />;
+  })(({ theme, expand }) => ({
+    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  }));
 
   return (
     <div className="cards">
@@ -22,20 +46,31 @@ export default function ExerciseCard({exercise}){
         height: 2600,
       }}
       >
-        <Card variant="outlined" className="card"
-        sx={{
-          // width:,
-        }}
-        >
+        <Card variant="outlined" className="card">
           <Typography component="h2" variant="h5">
             {name} | {level} 
           </Typography>
-          <Typography component="h3" variant="body2"
-            sx={{
-              margin: 2,
-            }}>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <Typography component="h3" variant="body2" sx={{margin: 2,}}>
             <SingleRound exercise={exercise} />
           </Typography>
+          </Collapse>
+            <CardActions disableSpacing>
+              <IconButton aria-label="add to favorites">
+                <FavoriteIcon />
+              </IconButton>
+              <IconButton aria-label="share">
+                <ShareIcon />
+              </IconButton>
+            <ExpandMore
+              expand={expanded}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </ExpandMore>
+          </CardActions>
         </Card>
       </Box>
     </div>
