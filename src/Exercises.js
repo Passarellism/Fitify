@@ -9,8 +9,12 @@ export default function Exercises({exercise, setExercise}){
     const exerciseCards = exercise?.map(exercise => <ExerciseCard key={exercise.id} exercise={exercise} setExercise={setExercise}/>)
     
     return (
-        <Grid container spacing={2} columnSpacing={{ xs: 2, sm: 5, md: 5 }} maxWidth="xl">
-            <Grid item xs={2}>
+        <Grid container spacing={2} columnSpacing={{ xs: 1, sm: 5, md: 5 }} maxWidth="xl"
+        sx={{
+            gridTemplateColumns: 'repeat(4, 1fr)',
+             width: 600,  
+        }}>
+            <Grid item xs={1.9}>
                 <ul style={{ listStyleType: "none", margin: 0, padding: 30 }}>
                     <Typography variant="h5" style={{ marginBottom: "10px" }}><a href="#" style={{ textDecoration: "none", color: "black" }}>All Exercises</a></Typography>
                     <Typography variant="h5" style={{ marginBottom: "10px" }}><a href="#" style={{ textDecoration: "none", color: "black" }}>Favorites</a></Typography>

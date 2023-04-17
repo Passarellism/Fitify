@@ -15,6 +15,7 @@ import { red } from '@mui/material/colors';
 import CardHeader from '@mui/material/CardHeader';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
+import CardContent from '@mui/material/CardContent';
 
 export default function ExerciseCard({exercise}){
   const { name, level, } = exercise;
@@ -41,33 +42,37 @@ export default function ExerciseCard({exercise}){
       <Box
       sx={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
+        gridTemplateColumns: 'repeat(4, 1fr)',
         marginTop: 8,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        width: 350,
+        width: 400,
         height: 2600,
       }}
       >
-        <Card variant="outlined" className="card" sx={{ maxWidth: 500 }}>
-        <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="Steve">
-            PO
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={name}
-        subheader={level}
-      />
-          {/* <Typography component="h2" variant="h5">
-            {name} | {level} 
-          </Typography> */}
+        <Card variant="outlined" className="card" sx={{ width: 375 }}>
+          <CardHeader
+            avatar={
+              <Avatar sx={{ bgcolor: red[500] }} aria-label="Steve">
+                PO
+              </Avatar>
+            }
+            action={
+              <IconButton aria-label="settings">
+                <MoreVertIcon />
+              </IconButton>
+            }
+            title={name}
+            subheader={level}
+          />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+          DESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTION
+          DESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTION
+          DESCRIPTIONDESCRIPTIONDESCRIPTIONDESCRIPTION
+          </Typography>
+        </CardContent>
             <CardActions disableSpacing>
               <IconButton aria-label="add to favorites">
                 <FavoriteIcon />
