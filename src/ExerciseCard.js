@@ -11,6 +11,10 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import CardActions from '@mui/material/CardActions';
+import { red } from '@mui/material/colors';
+import CardHeader from '@mui/material/CardHeader';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Avatar from '@mui/material/Avatar';
 
 export default function ExerciseCard({exercise}){
   const { name, level, } = exercise;
@@ -46,15 +50,24 @@ export default function ExerciseCard({exercise}){
         height: 2600,
       }}
       >
-        <Card variant="outlined" className="card">
-          <Typography component="h2" variant="h5">
+        <Card variant="outlined" className="card" sx={{ maxWidth: 500 }}>
+        <CardHeader
+        avatar={
+          <Avatar sx={{ bgcolor: red[500] }} aria-label="Steve">
+            PO
+          </Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title={name}
+        subheader={level}
+      />
+          {/* <Typography component="h2" variant="h5">
             {name} | {level} 
-          </Typography>
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Typography component="h3" variant="body2" sx={{margin: 2,}}>
-            <SingleRound exercise={exercise} />
-          </Typography>
-          </Collapse>
+          </Typography> */}
             <CardActions disableSpacing>
               <IconButton aria-label="add to favorites">
                 <FavoriteIcon />
@@ -62,15 +75,20 @@ export default function ExerciseCard({exercise}){
               <IconButton aria-label="share">
                 <ShareIcon />
               </IconButton>
-            <ExpandMore
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
-              <ExpandMoreIcon />
-            </ExpandMore>
-          </CardActions>
+              <ExpandMore
+                expand={expanded}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+              >
+                <ExpandMoreIcon />
+              </ExpandMore>
+            </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <Typography component="h3" variant="body2" sx={{margin: 2,}}>
+                <SingleRound exercise={exercise} />
+              </Typography>
+              </Collapse>
         </Card>
       </Box>
     </div>
