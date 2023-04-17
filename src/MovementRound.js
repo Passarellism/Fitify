@@ -34,7 +34,7 @@ function MovementRound({round}){
                 <div key={movementround.movement_id}>
                     <Movements movementround={movementround}/> 
                 </div>
-                <Box sx={{mt:-3}}>
+                <Box sx={{width: 250, mt:-3}}>
                     <ul>
                         <Typography component="h1" variant="body2" sx={{mt: -2,}}>
                             <p>Weight: {movementround.weight}</p>

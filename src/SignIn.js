@@ -96,7 +96,7 @@ function SignIn() {
       if (response.ok) {
         const user = await response.json();
         sessionStorage.setItem('user', JSON.stringify(user));
-        history.push('/profile');
+        history.push('/calendar');
       } else {
         actions.setSubmitting(false);
         actions.setFieldError('general', 'Login failed');

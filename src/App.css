@@ -1,4 +1,4 @@
-.cards {
+/* .cards {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -8,11 +8,8 @@
 }
 
 .card {
-  /* width: 100px;
-  height: 100px;
-  margin: 100px; */
 }
 
 .custom-typography p {
-  margin: 0.5rem; // adjust the value to your liking
-}
+  margin: 0.5rem; 
+} */

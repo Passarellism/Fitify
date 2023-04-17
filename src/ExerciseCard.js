@@ -3,6 +3,7 @@ import SingleRound from './SingleRound';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+// import Item from '@mui/material/Item';
 
 export default function ExerciseCard({exercise}){
   const { name, level, } = exercise;
@@ -11,6 +12,8 @@ export default function ExerciseCard({exercise}){
     <div className="cards">
       <Box
       sx={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
         marginTop: 8,
         display: 'flex',
         flexDirection: 'column',
@@ -19,7 +22,11 @@ export default function ExerciseCard({exercise}){
         height: 2600,
       }}
       >
-        <Card variant="outlined" className="card">
+        <Card variant="outlined" className="card"
+        sx={{
+          // width:,
+        }}
+        >
           <Typography component="h2" variant="h5">
             {name} | {level} 
           </Typography>
