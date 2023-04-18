@@ -58,7 +58,7 @@ export default function App() {
     });
   }, [])
 
-  console.log(exercise)
+  // console.log(exercise)
 
   return (
     <ThemeProvider theme={theme}>
@@ -97,7 +97,7 @@ export default function App() {
               <SignIn />
             </Route>
             <Route path="/favorites">
-              <Favorites user={user}/>
+              <Favorites user={user} exercise={exercise}/>
             </Route>
           </Switch>
         </Router>
