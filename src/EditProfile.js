@@ -74,9 +74,7 @@ export default function EditProfile({ user }){
                         name="first_name"
                         value={formik.values.first_name}
                         onChange={formik.handleChange}
-                      >
-                        First Name:
-                      </TextField>
+                      ></TextField>
                     </Box>
                     <Box marginBottom={2}>
                       <TextField
@@ -116,9 +114,7 @@ export default function EditProfile({ user }){
                         name="phone_number"
                         value={formik.values.phone_number}
                         onChange={formik.handleChange}
-                      >
-                        Phone Number:
-                      </TextField>
+                      ></TextField>
                     </Box>
                     <Box display="flex" justifyContent="space-between">
                       <Button type="submit" value="Save">

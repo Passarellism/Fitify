@@ -18,21 +18,21 @@ import Avatar from '@mui/material/Avatar';
 import CardContent from '@mui/material/CardContent';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-export default function ExerciseCard({exercise, isFavorited, handleToggleFavorite }){
+export default function ExerciseCard({exercise}){
   const { name, level, date, description, id } = exercise;
   const [expanded, setExpanded] = React.useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
-  // console.log(typeof handleToggleFavorite)
+  const handleClick = () => {
+    setIsFavorite(!isFavorite);
+  };
+  console.log(typeof exercise)
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const handleFavoriteClick = () => {
-    handleToggleFavorite(exercise.id);
-  };
-  // console.log(handleToggleFavorite)
-  // console.log(description)
+
 
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -82,8 +82,8 @@ export default function ExerciseCard({exercise, isFavorited, handleToggleFavorit
           </Typography>
         </CardContent>
             <CardActions disableSpacing>
-            <IconButton aria-label={isFavorited ? 'remove from favorites' : 'add to favorites'} >
-              {isFavorited ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            <IconButton aria-label={isFavorite ? 'remove from favorites' : 'add to favorites'} onClick={handleClick}>
+              {isFavorite ? <FavoriteIcon style={{ color: 'red'}} /> : <FavoriteBorderIcon />}
             </IconButton>
               <IconButton aria-label="share">
                 <ShareIcon />

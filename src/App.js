@@ -11,7 +11,6 @@ import MovementRound from "./MovementRound";
 import Movements from "./Movements";
 import EditProfile from "./EditProfile";
 import AddToCalendar from "./AddToCalendar";
-import Favorites from "./Favorites";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -22,6 +21,7 @@ export default function App() {
   const [exercise, setExercise] = useState([])
   const theme = createTheme();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
 
   useEffect(() => {
@@ -46,17 +46,21 @@ export default function App() {
 
   useEffect(() => {
     fetch('http://localhost:5555/exercises')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Error fetching data: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(setExercise)
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
-  }, [])
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Error fetching data: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        const exercisesWithFavorites = data.map(e => ({ ...e, isFavorite: false }));
+        setExercise(exercisesWithFavorites);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+  
 
   // console.log(exercise)
 
@@ -95,9 +99,6 @@ export default function App() {
             </Route>
             <Route path="/signin">
               <SignIn />
-            </Route>
-            <Route path="/favorites">
-              <Favorites user={user} exercise={exercise}/>
             </Route>
           </Switch>
         </Router>
