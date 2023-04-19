@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignIn from "./SignIn";
 import Home from "./Home";
@@ -11,8 +12,8 @@ import MovementRound from "./MovementRound";
 import Movements from "./Movements";
 import EditProfile from "./EditProfile";
 import AddToCalendar from "./AddToCalendar";
+import Favorites from "./Favorites";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 
 export default function App() {
 
@@ -21,8 +22,7 @@ export default function App() {
   const [exercise, setExercise] = useState([])
   const theme = createTheme();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-
+  const history = useHistory();
 
   useEffect(() => {
     fetchUser()
@@ -60,15 +60,12 @@ export default function App() {
         console.error('Error fetching data:', error);
       });
   }, []);
-  
-
-  // console.log(exercise)
 
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <Router>
-        <NavBar onChangePage={setPage} />
+        <NavBar onChangePage={setPage} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           <Switch>
             <Route path="/home">
               <Home />
@@ -98,7 +95,10 @@ export default function App() {
               <Movements />
             </Route>
             <Route path="/signin">
-              <SignIn />
+              <SignIn setIsLoggedIn={setIsLoggedIn} />
+            </Route>
+            <Route path="/favorites">
+              <Favorites exercises={exercise} />
             </Route>
           </Switch>
         </Router>

@@ -66,7 +66,7 @@ const signUpValidationSchema = Yup.object().shape({
   lastName: Yup.string().required('Required'),
 });
 
-function SignIn() {
+function SignIn({setIsLoggedIn}) {
   const history = useHistory();
   const [showSignUp, setShowSignUp] = useState(false);
 
@@ -96,7 +96,8 @@ function SignIn() {
       if (response.ok) {
         const user = await response.json();
         sessionStorage.setItem('user', JSON.stringify(user));
-        history.push('/calendar');
+        setIsLoggedIn(true); 
+        history.push('/home');
       } else {
         actions.setSubmitting(false);
         actions.setFieldError('general', 'Login failed');
@@ -118,8 +119,8 @@ function SignIn() {
       });
 
       if (response.ok) {
-        const climber = await response.json();
-        localStorage.setItem('climber', JSON.stringify(climber));
+        const user = await response.json();
+        localStorage.setItem('user', JSON.stringify(user));
         history.push('/profile');
       } else {
         actions.setSubmitting(false);

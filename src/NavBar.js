@@ -2,22 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
-export default function NavBar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export default function NavBar({isLoggedIn, setIsLoggedIn}) {
 
-
-
-  useEffect(() => {
-    fetch('/authorized')
-      .then(res => {
-        if (res.ok) {
-          setIsLoggedIn(true);
-        } else {
-          setIsLoggedIn(false);
-        }
-      })
-      .catch(error => console.error('Error checking auth status:', error));
-  }, []);
 
   return (
     <Tabs  aria-label="nav tabs example">

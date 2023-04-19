@@ -3,7 +3,6 @@ import SingleRound from './SingleRound';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-// import Item from '@mui/material/Item';
 import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import { styled } from '@mui/material/styles';
@@ -18,21 +17,48 @@ import Avatar from '@mui/material/Avatar';
 import CardContent from '@mui/material/CardContent';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-export default function ExerciseCard({exercise}){
+export default function ExerciseCard({exercise, setNewFavoriteExercise}){
   const { name, level, date, description, id } = exercise;
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  // const [favoriteExercises, setFavoriteExercises] = useState([]);
+
+  // const favoriteExercises = []
+
+// console.log(setFavoriteExercises)
+
+  function handleAddFavorite(exercise){
+    // console.log("add favorite function called with id:", exercise);
+    setNewFavoriteExercise((exercise));
+    // (favoriteExercises.push(exercise))
+    }
+
+  function handleRemoveFavorite(exerciseId){
+    // setFavoriteExercises(favoriteExercises.filter(exercise => exercise.id !== exerciseId));
+  };
+
+  // console.log(favoriteExercises)
 
   const handleClick = () => {
-    setIsFavorite(!isFavorite);
+    // if (isFavorite) {
+      // setIsFavorite(false);
+      // handleRemoveFavorite(id);
+    // } else {
+      // setIsFavorite(true);
+      handleAddFavorite(exercise);
+    // }
   };
-  console.log(typeof exercise)
+
+  // const handleClick = () => {
+  //   setIsFavorite(!isFavorite);
+  // };
+  // console.log(typeof exercise)
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-
+      
 
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -45,7 +71,6 @@ export default function ExerciseCard({exercise}){
     }),
   }));
 
-
   return (
     <div className="cards">
       <Box
@@ -57,7 +82,6 @@ export default function ExerciseCard({exercise}){
         flexDirection: 'column',
         alignItems: 'center',
         width: 390,
-        // height: 200,
       }}
       >
       
@@ -82,8 +106,15 @@ export default function ExerciseCard({exercise}){
           </Typography>
         </CardContent>
             <CardActions disableSpacing>
-            <IconButton aria-label={isFavorite ? 'remove from favorites' : 'add to favorites'} onClick={handleClick}>
-              {isFavorite ? <FavoriteIcon style={{ color: 'red'}} /> : <FavoriteBorderIcon />}
+            <IconButton
+              aria-label={isFavorite ? 'remove from favorites' : 'add to favorites'}
+              onClick={handleClick}
+            >
+              {isFavorite ? (
+                <FavoriteIcon style={{ color: 'red' }} />
+              ) : (
+                <FavoriteBorderIcon />
+              )}
             </IconButton>
               <IconButton aria-label="share">
                 <ShareIcon />

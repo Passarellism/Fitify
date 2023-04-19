@@ -15,7 +15,6 @@ export default function Calendar({ exercise, user }) {
   const [userExercise, setUserExercise] = useState([])
   // console.log(user)
   
-
   useEffect(() => {
     fetch('http://localhost:5555/userexercises').then((res) => res.json())
     .then((data) => {
@@ -35,10 +34,10 @@ export default function Calendar({ exercise, user }) {
   //   return <ExerciseCard exercise={exercise} key={userExercise.id} />;
   // });
 
-  console.log(filteredUserExercises)
+  // console.log(filteredUserExercises)
 
-  const userExerciseComponents = filteredUserExercises.map((userExercise) => {
-    if (userExercise.user_id === user.id)
+  const userExerciseComponents = filteredUserExercises?.map((userExercise) => {
+    if (userExercise.user_id === user?.id)
       return <ExerciseCard exercise={userExercise.exercise} key={exercise.id} />;
     // return true
   });

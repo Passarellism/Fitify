@@ -2,13 +2,11 @@ import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import { useFormik } from "formik";
 import { useHistory } from 'react-router-dom';
-import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-// import { Container, TextField, Button, Grid } from '@material-ui/core';;
 
 export default function EditProfile({ user }){
 
@@ -54,7 +52,6 @@ export default function EditProfile({ user }){
         })
         }
     })
-
 
     if (!isLoaded) return <h1>Loading...</h1>;
     if ((user&&user.is_admin === false) || (!user)) {
@@ -129,9 +126,5 @@ export default function EditProfile({ user }){
               </Container>
             </>
           );
-          
- 
     }
-
-
 }

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
 import Typography from '@mui/material/Typography';
 
-function Movements({ movementround }){
+export default function Movements({ movementround }){
     const [movement, setMovement] = useState([])
     const { movement_id } = movementround;
 
@@ -34,5 +33,3 @@ function Movements({ movementround }){
         <div>{movementToDisplay}</div>
     )
 }
-
-export default Movements;

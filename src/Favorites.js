@@ -1,34 +1,44 @@
-// import React from 'react';
-// import ExerciseCard from './ExerciseCard';
+import React, { useState } from 'react';
+import ExerciseCard from './ExerciseCard';
 
-// export default function Favorites({ user, setUser, exercise }) {
-//   const favorites = user?.favorites ?? [];
+export default function Favorites({ exercises }) {
+    // const { id } = exercise
+  const [favoriteExercises, setFavoriteExercises] = useState([]);
+  const [newFavoriteExercise, setNewFavoriteExercise] = useState(null);
+    // const abc = 3
+//   console.log(exercise)
 
-//   const toggleFavorite = (id) => {
-//     const index = favorites.indexOf(id);
-//     if (index === -1) {
-//       user.favorites = [...favorites, id];
-//     } else {
-//       user.favorites = [...favorites.slice(0, index), ...favorites.slice(index + 1)];
-//     }
-//     // Force a re-render of the component
-//     setUser({ ...user });
+    // console.log(favoriteExercises)
+    if (newFavoriteExercise != null){
+        setFavoriteExercises([...favoriteExercises, newFavoriteExercise]);
+        setNewFavoriteExercise(null)
+}
+
+    console.log(newFavoriteExercise)
+    console.log(favoriteExercises)
+
+    // function handleAddFavorite(exercise){
+    // console.log("add favorite function called with id:", exercise);
+    // setFavoriteExercises([...favoriteExercises, exercise]);
+    // }
+
+    // console.log(handleAddFavorite)
+
+//   function handleRemoveFavorite(exerciseId){
+//     setFavoriteExercises(favoriteExercises.filter(exercise => exercise.id !== exerciseId));
 //   };
 
-//   return (
-//     <div>
-//       <h1>Favorites</h1>
-//       {exercise.map((ex) => {
-//         const isFavorite = favorites.includes(ex.id);
-//         return (
-//           <ExerciseCard
-//             key={ex.id}
-//             exercise={ex}
-//             isFavorite={isFavorite}
-//             onToggleFavorite={() => toggleFavorite(ex.id)}
-//           />
-//         );
-//       })}
-//     </div>
-//   );
-// }
+  return (
+    <div className="favorites">
+      {exercises.map((exercise) => (
+        <ExerciseCard 
+          key={exercise.id} 
+          exercise={exercise}
+          setNewFavoriteExercise={setNewFavoriteExercise}
+        //   onAddFavorite={handleAddFavorite} 
+        //   onRemoveFavorite={handleRemoveFavorite} 
+        />
+      ))}
+    </div>
+  );
+}

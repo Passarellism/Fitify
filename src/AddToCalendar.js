@@ -1,28 +1,20 @@
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { StaticDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-// import { useFormik } from "formik";
 
 export default function AddToCalendar({exercise}) {
     const [selectedDate, setSelectedDate] = useState("");
     const { id } = useParams();
     const history = useHistory();
     
-    
     const handleSubmit = (event) => {
         event.preventDefault();
-        
-        
+          
     const filteredExercises = exercise.filter((exercise) => exercise.id === Number(id));
 
-    
     const requestBody = {
         exercise_id: filteredExercises[0].id,
         date: selectedDate
     };
-    
-    // console.log(filteredExercises[0].id)
     
     fetch("/userexercises", {
         method: "POST",
@@ -51,8 +43,6 @@ const handleDateChange = (event) => {
 
 return (
     <div>
-    {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <StaticDatePicker> */}
       <h1>Add to Calendar</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -61,8 +51,6 @@ return (
         </label>
         <button type="submit">Add to Calendar</button>
       </form>
-      {/* </StaticDatePicker>
-      </LocalizationProvider> */}
     </div>
   );
 }
