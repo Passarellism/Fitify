@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import Button from '@mui/material/Button';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 export default function AddToCalendar({exercise}) {
     const [selectedDate, setSelectedDate] = useState("");
@@ -45,10 +49,13 @@ return (
     <div>
       <h1>Add to Calendar</h1>
       <form onSubmit={handleSubmit}>
+      {/* <LocalizationProvider dateAdapter={AdapterDayjs}> */}
         <label>
           Date:
+          {/* <DatePicker label="Basic date picker" value={selectedDate} onChange={handleDateChange}/> */}
           <input type="date" value={selectedDate} onChange={handleDateChange} />
         </label>
+        {/* </LocalizationProvider> */}
         <button type="submit">Add to Calendar</button>
       </form>
     </div>
