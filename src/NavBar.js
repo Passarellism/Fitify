@@ -4,9 +4,12 @@ import Tab from '@mui/material/Tab';
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import { useHistory } from 'react-router-dom';
 
-export default function NavBar({isLoggedIn, setIsLoggedIn}) {
-  const blackText = { color: "black" };
+export default function NavBar({ isLoggedIn, setIsLoggedIn }) {
+  const blackText = { color: 'black' };
+  const history = useHistory();
 
   return (
     <Tabs aria-label="nav tabs example">
@@ -17,20 +20,29 @@ export default function NavBar({isLoggedIn, setIsLoggedIn}) {
       <Tab label="Following" component={Link} to="/following" sx={blackText} />
       <Tab label="Discover" component={Link} to="/discover" sx={blackText} />
       {/* <Tab icon={<SearchIcon />} component={Link} to="/search" sx={blackText} /> */}
-      <Box sx={{ marginLeft: 'auto' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', marginRight: '20px' }}>
+
         {isLoggedIn ? (
-            <>
-              <Tab label="Profile" component={Link} to="/profile" sx={blackText} />
-              <Tab label="Log Out" to="/logout" onClick={() => {
+          <>
+            <Tab label="Profile" component={Link} to="/profile" sx={blackText} />
+            <Tab
+              label="Log Out"
+              to="/logout"
+              onClick={() => {
                 fetch('/logout', { method: 'DELETE' })
                   .then(() => setIsLoggedIn(false))
                   .catch(error => console.error('Error logging out:', error));
-              }} sx={blackText} />
-            </>
-          ) : (
-            <Tab label="Log In/Sign Up" component={Link} to="/signin" sx={blackText} />
-          )}
+                  history.push('/signin')
+              }}
+              sx={blackText}
+            />
+          </>
+        ) : (
+          <Button sx={{ paddingRight: '10px' }} variant="contained" component={Link} to="/signin">
+            Sign In
+          </Button>
+        )}
       </Box>
     </Tabs>
-  )
+  );
 }
