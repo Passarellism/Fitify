@@ -16,9 +16,9 @@ export default function NavBar({ isLoggedIn, setIsLoggedIn }) {
       <Tab label="Home" component={Link} to="/home" sx={blackText} />
       <Tab label="Exercises" component={Link} to="/exercises" sx={blackText} />
       <Tab label="Calendar" component={Link} to="/calendar" sx={blackText} />
-      <Tab label="Trainers" component={Link} to="/trainers" sx={blackText} />
+      {/* <Tab label="Trainers" component={Link} to="/trainers" sx={blackText} />
       <Tab label="Following" component={Link} to="/following" sx={blackText} />
-      <Tab label="Discover" component={Link} to="/discover" sx={blackText} />
+      <Tab label="Discover" component={Link} to="/discover" sx={blackText} /> */}
       {/* <Tab icon={<SearchIcon />} component={Link} to="/search" sx={blackText} /> */}
       <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', marginRight: '20px' }}>
 
